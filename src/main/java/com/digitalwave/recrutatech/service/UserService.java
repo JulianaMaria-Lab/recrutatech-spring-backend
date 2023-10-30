@@ -80,6 +80,23 @@ public class UserService implements IUserService {
     return user;
   }
 
+  @Override
+    public void resetPassword(String email, String newPassword) {
+      User user = userRepo.findByUserEmail(email);
+      if (user != null) {
+        if (isPasswordValid(newPassword)) {
+          String hashedPassword = hashPassword(newPassword);
+          user.setUserPassword(hashedPassword);
+          userRepo.save(user);
+            // Redirecione o usuário de volta para a página de login
+        } else {
+            // Lidar com o caso em que a senha não atende aos critérios de validação
+        }
+      } else {
+        // Lidar com o caso em que o usuário não é encontrado
+      }
+    }
+
   private void validateUser(User user) {
     if (user == null || 
         isNullOrBlank(user.getUserName()) || 
@@ -91,5 +108,17 @@ public class UserService implements IUserService {
 
   private boolean isNullOrBlank(String value) {
     return value == null || value.trim().isEmpty();
+  }
+
+  private boolean isPasswordValid(String password) {
+    return password.length() >= 8 &&
+      password.matches(".*[A-Z].*") &&
+      password.matches(".*[a-z].*") &&
+      password.matches(".*\\d.*") &&
+      password.matches(".*[@#$%^&+=].*");
+  }
+
+  private String hashPassword(String password) {
+    return passwordEncoder.encode(password);
   }
 }

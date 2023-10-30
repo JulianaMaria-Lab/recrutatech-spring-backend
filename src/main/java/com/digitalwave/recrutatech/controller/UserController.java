@@ -49,4 +49,10 @@ public class UserController {
     userService.deleteUser(id);
     return ResponseEntity.noContent().build();
   }
+
+  @PostMapping("/reset-password")
+  public ResponseEntity<String> resetPassword(@RequestParam String userEmail, @RequestParam String newPassword) {
+    userService.resetPassword(userEmail, newPassword);
+    return ResponseEntity.ok("Senha redefinida com sucesso.");
+  }
 }
