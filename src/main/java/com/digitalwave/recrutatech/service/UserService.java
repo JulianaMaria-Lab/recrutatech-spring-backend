@@ -99,4 +99,16 @@ public class UserService implements IUserService {
   private boolean isNullOrBlank(String value) {
     return value == null || value.trim().isEmpty();
   }
+
+  private boolean isPasswordValid(String password) {
+    return password.length() >= 8 &&
+      password.matches(".*[A-Z].*") &&
+      password.matches(".*[a-z].*") &&
+      password.matches(".*\\d.*") &&
+      password.matches(".*[@#$%^&+=].*");
+  }
+
+  private String hashPassword(String password) {
+    return passwordEncoder.encode(password);
+  }
 }
