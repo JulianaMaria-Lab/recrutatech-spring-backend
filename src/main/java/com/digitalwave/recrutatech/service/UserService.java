@@ -80,6 +80,13 @@ public class UserService implements IUserService {
     return user;
   }
 
+  public User findByEmail(String userEmail) {
+    System.out.println("Buscando usuário com email: " + userEmail);
+    User user = userRepo.findByUserEmail(userEmail);
+    System.out.println("Usuário encontrado: " + user);
+    return user;
+  }
+  
   private void validateUser(User user) {
     if (user == null || 
         isNullOrBlank(user.getUserName()) || 
