@@ -1,5 +1,12 @@
 package com.digitalwave.recrutatech.entity;
 
+import java.util.Collection;
+import java.util.List;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -9,22 +16,22 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name="user")
-
-public class User {
+public class User implements UserDetails{
+  
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "user_id")
-  private long id;
+  private Long id;
 
   @Column(name = "user_name")
   private String userName;
 
   @Column(name = "user_email")
-  private String userEmail;
+  private String email;
 
   @Column(name = "user_password")
   //@JsonIgnore
-  private String userPassword;
+  private String password;
 
   @Column(name = "user_role")
   private String userRole;
@@ -38,7 +45,17 @@ public class User {
   @Column(name = "updated_at")
   private java.sql.Timestamp updatedAt;
 
-  public long getId() {
+  public User() {
+  }
+
+  public User(String userName, String email, String password, String userRole) {
+    this.userName = userName;
+    this.email = email;
+    this.password = password;
+    this.userRole = userRole;
+  }
+
+  public Long getId() {
     return id;
   }
 
@@ -54,20 +71,20 @@ public class User {
     this.userName = userName;
   }
 
-  public String getUserEmail() {
-    return userEmail;
+  public String getemail() {
+    return email;
   }
 
-  public void setUserEmail(String userEmail) {
-    this.userEmail = userEmail;
+  public void setemail(String email) {
+    this.email = email;
   }
 
-  public String getUserPassword() {
-    return userPassword;
+  public String getpassword() {
+    return password;
   }
 
-  public void setUserPassword(String userPassword) {
-    this.userPassword = userPassword;
+  public void setpassword(String password) {
+    this.password = password;
   }
 
   public String getUserRole() {
@@ -100,5 +117,47 @@ public class User {
 
   public void setUpdatedAt(java.sql.Timestamp updatedAt) {
     this.updatedAt = updatedAt;
-  }  
+  }
+
+  @Override
+  public Collection<? extends GrantedAuthority> getAuthorities() {
+    // TODO Auto-generated method stub
+    return List.of(new SimpleGrantedAuthority(userRole));
+  }
+
+  @Override
+  public String getPassword() {
+    // TODO Auto-generated method stub
+    return password;
+  }
+
+  @Override
+  public String getUsername() {
+    // TODO Auto-generated method stub
+    return email;
+  }
+
+  @Override
+  public boolean isAccountNonExpired() {
+    // TODO Auto-generated method stub
+    return true;
+  }
+
+  @Override
+  public boolean isAccountNonLocked() {
+    // TODO Auto-generated method stub
+    return true;
+  }
+
+  @Override
+  public boolean isCredentialsNonExpired() {
+    // TODO Auto-generated method stub
+    return true;
+  }
+
+  @Override
+  public boolean isEnabled() {
+    // TODO Auto-generated method stub
+    return true;
+  }
 }

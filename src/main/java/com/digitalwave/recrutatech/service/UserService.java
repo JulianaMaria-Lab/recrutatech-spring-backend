@@ -30,8 +30,8 @@ public class UserService implements IUserService {
 
     // Criptografa a senha usando BCrypt
     passwordEncoder = new BCryptPasswordEncoder();
-    String hashedPassword = passwordEncoder.encode(user.getUserPassword());
-    user.setUserPassword(hashedPassword);
+    String hashedPassword = passwordEncoder.encode(user.getpassword());
+    user.setpassword(hashedPassword);
     
     user.setUserStatus(true); // Defina o status como true por padrão
     user.setCreatedAt(new Timestamp(System.currentTimeMillis()));
@@ -57,8 +57,8 @@ public class UserService implements IUserService {
     if (!ObjectUtils.isEmpty(updatedUser.getUserName())) {
         existingUser.setUserName(updatedUser.getUserName());
     }
-    if (!ObjectUtils.isEmpty(updatedUser.getUserEmail())) {
-        existingUser.setUserEmail(updatedUser.getUserEmail());
+    if (!ObjectUtils.isEmpty(updatedUser.getemail())) {
+        existingUser.setemail(updatedUser.getemail());
     }
     if (!ObjectUtils.isEmpty(updatedUser.getUserRole())) {
         existingUser.setUserRole(updatedUser.getUserRole());
@@ -83,8 +83,8 @@ public class UserService implements IUserService {
   private void validateUser(User user) {
     if (user == null || 
         isNullOrBlank(user.getUserName()) || 
-        isNullOrBlank(user.getUserEmail()) || 
-        isNullOrBlank(user.getUserPassword())) {
+        isNullOrBlank(user.getemail()) || 
+        isNullOrBlank(user.getpassword())) {
       throw new IllegalArgumentException("Dados inválidos!");
     }
   }
