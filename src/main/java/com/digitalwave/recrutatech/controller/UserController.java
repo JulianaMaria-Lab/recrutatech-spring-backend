@@ -54,11 +54,7 @@ public class UserController {
   @PostMapping("/find-by-email")
   public ResponseEntity<User> findUserByEmail(@RequestBody Map<String, String> requestBody) {
   String userEmail = requestBody.get("userEmail");
-  System.out.println("-------------");
-  System.out.println(userEmail);
   User user = userService.findByEmail(userEmail);
-  System.out.println("-------------");
-  System.out.println(user);
   if (user != null) {
     return new ResponseEntity<>(user, HttpStatus.OK);
   } else {
