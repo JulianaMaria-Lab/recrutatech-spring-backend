@@ -21,7 +21,7 @@ CREATE TABLE user (
     updated_at TIMESTAMP,
     reset_password_token VARCHAR(255),
     token_created_at TIMESTAMP,
-    token_updated_at TIMESTAMP,
+    token_updated_at TIMESTAMP
 );
 
 -- CREATE TABLE job (

@@ -81,9 +81,12 @@ public class UserService implements IUserService {
   }
 
   public User findByEmail(String userEmail) {
-    System.out.println("Buscando usuário com email: " + userEmail);
     User user = userRepo.findByUserEmail(userEmail);
-    System.out.println("Usuário encontrado: " + user);
+    return user;
+  }
+
+  public User findByResetPasswordToken(String resetPAsswordToken) {
+    User user = userRepo.findByResetPasswordToken(resetPAsswordToken);
     return user;
   }
   

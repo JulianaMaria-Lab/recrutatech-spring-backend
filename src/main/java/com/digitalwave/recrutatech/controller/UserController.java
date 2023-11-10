@@ -76,9 +76,28 @@ public class UserController {
       user.setTokenCreatedAt(timestamp);
       user.setTokenUpdatedAt(timestamp);
 
+      userService.updateUser(user.getId(), user);
+      
       return new ResponseEntity<>(user, HttpStatus.OK);
     } else {
       return ResponseEntity.notFound().build();
+    }
+  }
+
+  @PostMapping("/find-by-reset-password-token")
+  public ResponseEntity<?> findUserByResetPasswordToken(@RequestBody Map<String, String> requestBody) {
+    String resetPasswordToken = requestBody.get("resetPAsswordToken");
+
+    if (resetPasswordToken != null && !resetPasswordToken.isEmpty()) {
+      User user = userService.findByResetPasswordToken(resetPasswordToken);
+
+      if (user != null) {
+        return new ResponseEntity<>(user, HttpStatus.OK);
+      } else {
+        return ResponseEntity.notFound().build();
+      }
+    } else {
+      return ResponseEntity.badRequest().body("O token de redefinição de senha não pode ser nulo ou vazio.");
     }
   }
 }

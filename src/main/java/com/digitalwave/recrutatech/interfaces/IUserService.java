@@ -11,4 +11,5 @@ public interface IUserService {
   User updateUser(Long id, User updatedUser);
   User deleteUser(Long id);
   User findByEmail(String userEmail);
+  User findByResetPasswordToken(String resetPasswordToken);
 }
