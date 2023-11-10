@@ -38,6 +38,15 @@ public class User {
   @Column(name = "updated_at")
   private java.sql.Timestamp updatedAt;
 
+  @Column(name = "reset_password_token")
+  private String resetPasswordToken;
+
+  @Column(name = "token_created_at")
+  private java.sql.Timestamp TokenCreatedAt;
+
+  @Column(name = "token_updated_at")
+  private java.sql.Timestamp TokenUpdatedAt;
+
   public long getId() {
     return id;
   }
@@ -101,4 +110,28 @@ public class User {
   public void setUpdatedAt(java.sql.Timestamp updatedAt) {
     this.updatedAt = updatedAt;
   }  
+
+  public String getResetPasswordToken() {
+    return resetPasswordToken;
+  }
+
+  public void setResetPasswordToken(String resetPasswordToken) {
+    this.resetPasswordToken = resetPasswordToken;
+  }
+
+  public java.sql.Timestamp getTokenCreatedAt() {
+    return TokenCreatedAt;
+  }
+
+  public void setTokenCreatedAt(java.sql.Timestamp tokenCreatedAt) {
+    TokenCreatedAt = tokenCreatedAt;
+  }
+
+  public java.sql.Timestamp getTokenUpdatedAt() {
+    return TokenUpdatedAt;
+  }
+
+  public void setTokenUpdatedAt(java.sql.Timestamp tokenUpdatedAt) {
+    TokenUpdatedAt = tokenUpdatedAt;
+  }
 }

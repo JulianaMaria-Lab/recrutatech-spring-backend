@@ -18,7 +18,10 @@ CREATE TABLE user (
     user_role VARCHAR(255),
     user_status BOOLEAN,
     created_at TIMESTAMP,
-    updated_at TIMESTAMP
+    updated_at TIMESTAMP,
+    reset_password_token VARCHAR(255),
+    token_created_at TIMESTAMP,
+    token_updated_at TIMESTAMP,
 );
 
 -- CREATE TABLE job (

@@ -1,12 +1,23 @@
 package com.digitalwave.recrutatech.controller;
 
+import java.sql.Timestamp;
+import java.time.Instant;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 import com.digitalwave.recrutatech.entity.User;
 import com.digitalwave.recrutatech.service.UserService;
 
@@ -55,10 +66,19 @@ public class UserController {
   public ResponseEntity<User> findUserByEmail(@RequestBody Map<String, String> requestBody) {
   String userEmail = requestBody.get("userEmail");
   User user = userService.findByEmail(userEmail);
-  if (user != null) {
-    return new ResponseEntity<>(user, HttpStatus.OK);
-  } else {
-    return ResponseEntity.notFound().build();
-  }
+
+    if (user != null) {
+      String reset_password_token = UUID.randomUUID().toString();
+      Instant currentTimestamp = Instant.now();
+      Timestamp timestamp = Timestamp.from(currentTimestamp);
+
+      user.setResetPasswordToken(reset_password_token);
+      user.setTokenCreatedAt(timestamp);
+      user.setTokenUpdatedAt(timestamp);
+
+      return new ResponseEntity<>(user, HttpStatus.OK);
+    } else {
+      return ResponseEntity.notFound().build();
+    }
   }
 }
