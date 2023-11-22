@@ -35,6 +35,11 @@ CREATE TABLE cha (
     FOREIGN KEY (atitude_id) REFERENCES atitude(id)
 );
 
+CREATE TABLE rank (
+    rank_id BIGINT AUTO_INCREMENT PRIMARY KEY,,
+    rank_value VARCHAR(255),
+);
+
 CREATE TABLE job (
     job_id BIGINT AUTO_INCREMENT PRIMARY KEY,
     job_title VARCHAR(255),
@@ -42,7 +47,9 @@ CREATE TABLE job (
     job_description VARCHAR(1500),
     job_status VARCHAR(255),
     cha_id BIGINT,
-    FOREIGN KEY (cha_id) REFERENCES cha(cha_id)
+    rank_id BIGINT,
+    FOREIGN KEY (cha_id) REFERENCES cha(cha_id),
+    FOREIGN KEY (rank_id) REFERENCES rank(rank_id),
 );
 */
 
@@ -52,6 +59,21 @@ VALUES
     ('Usuario2', 'usuario2@example.com', 'senha2', 'ROLE_USER', true, NOW(), NOW()),
     ('Usuario3', 'usuario3@example.com', 'senha3', 'ROLE_ADMIN', true, NOW(), NOW()),
     ('Usuario4', 'usuario4@example.com', 'senha4', 'ROLE_USER', false, NOW(), NOW());
+
+INSERT INTO rank (rank_value)
+VALUES
+([["305.162",48.63],["298.657",48.36],["574.227",43.72],["383.891",43.44],["560.012",41.8],["581.111",37.98],["518.553",37.98],["408.629",37.98],["258.550",37.7],["581.094",37.7],["581.065",37.7]]),
+([["305.162",48.63],["298.657",48.36],["574.227",43.72],["383.891",43.44],["560.012",41.8],["581.111",37.98],["518.553",37.98],["408.629",37.98],["258.550",37.7],["581.094",37.7],["581.065",37.7]]),
+([["305.162",48.63],["298.657",48.36],["574.227",43.72],["383.891",43.44],["560.012",41.8],["581.111",37.98],["518.553",37.98],["408.629",37.98],["258.550",37.7],["581.094",37.7],["581.065",37.7]]),
+([["305.162",48.63],["298.657",48.36],["574.227",43.72],["383.891",43.44],["560.012",41.8],["581.111",37.98],["518.553",37.98],["408.629",37.98],["258.550",37.7],["581.094",37.7],["581.065",37.7]]),
+([["305.162",48.63],["298.657",48.36],["574.227",43.72],["383.891",43.44],["560.012",41.8],["581.111",37.98],["518.553",37.98],["408.629",37.98],["258.550",37.7],["581.094",37.7],["581.065",37.7]]),
+([["305.162",48.63],["298.657",48.36],["574.227",43.72],["383.891",43.44],["560.012",41.8],["581.111",37.98],["518.553",37.98],["408.629",37.98],["258.550",37.7],["581.094",37.7],["581.065",37.7]]),
+([["305.162",48.63],["298.657",48.36],["574.227",43.72],["383.891",43.44],["560.012",41.8],["581.111",37.98],["518.553",37.98],["408.629",37.98],["258.550",37.7],["581.094",37.7],["581.065",37.7]]),
+([["305.162",48.63],["298.657",48.36],["574.227",43.72],["383.891",43.44],["560.012",41.8],["581.111",37.98],["518.553",37.98],["408.629",37.98],["258.550",37.7],["581.094",37.7],["581.065",37.7]]),
+([["305.162",48.63],["298.657",48.36],["574.227",43.72],["383.891",43.44],["560.012",41.8],["581.111",37.98],["518.553",37.98],["408.629",37.98],["258.550",37.7],["581.094",37.7],["581.065",37.7]]),
+([["305.162",48.63],["298.657",48.36],["574.227",43.72],["383.891",43.44],["560.012",41.8],["581.111",37.98],["518.553",37.98],["408.629",37.98],["258.550",37.7],["581.094",37.7],["581.065",37.7]]),
+([["305.162",48.63],["298.657",48.36],["574.227",43.72],["383.891",43.44],["560.012",41.8],["581.111",37.98],["518.553",37.98],["408.629",37.98],["258.550",37.7],["581.094",37.7],["581.065",37.7]]),
+([["305.162",48.63],["298.657",48.36],["574.227",43.72],["383.891",43.44],["560.012",41.8],["581.111",37.98],["518.553",37.98],["408.629",37.98],["258.550",37.7],["581.094",37.7],["581.065",37.7]]);
 
 INSERT INTO conhecimento (c_content) VALUES 
 -- P.O
@@ -160,17 +182,17 @@ INSERT INTO cha (conhecimento_id, habilidade_id, atitude_id) VALUES
 -- Desenvolvedor Full Stack Sênior
 (12,12,12);
 
-INSERT INTO job (job_title, job_level, job_description, job_status, cha_id) VALUES 
+INSERT INTO job (job_title, job_level, job_description, job_status, cha_id,rank_id) VALUES 
 ('Product Owner',
-'Pleno','Estamos à procura de um Product Owner habilidoso para se juntar à nossa equipe de desenvolvimento de software. O candidato ideal terá mais de 3 anos de experiência em gerenciamento de produtos e será capaz de liderar efetivamente tanto o planejamento quanto a execução de projetos complexos.','open', 1),
-('Analista de Testes','Pleno','Esse(a) profissional é responsável por criar e executar testes que servirão para analisar se um produto ou um processo está funcionando da melhor maneira possível. Além disso, pode desenvolver a automação de testes que ocorram com frequência para sua análise.\n\nNo caso de produtos digitais, os analistas de QA podem trabalhar com softwares, sites, aplicativos ou jogos. Além disso, podem realizar a automação de testes que ocorram com frequência para sua posterior análise.\n\nÉ importante que o analista registre todas as falhas encontradas e faça a sugestão de melhorias. Para isso, irá trabalhar diretamente com a equipe de desenvolvimento..\n\nBuscamos um perfil bastante detalhista e analítico, pois, em última análise, seu trabalho será parte integrante de nossos esforços para garantir a melhor experiência de uso do nosso aplicativo.','open',2),
-('Scrum Master','Pleno','Estamos à procura de um Scrum Master qualificado para liderar nossas equipes ágeis e garantir a entrega de valor. O candidato ideal deve possuir certificação Scrum Master, experiência em facilitação de reuniões ágeis e remoção de impedimentos, além de promover a melhoria contínua. Se você é apaixonado por metodologias ágeis e tem habilidade para colaborar com equipes, esta vaga é para você.', 'open', 3),
-('Desenvolvedor Frontend','Pleno','Estamos à procura de um Desenvolvedor Frontend talentoso para criar interfaces de usuário atraentes e funcionais. O candidato ideal deve ter experiência em HTML, CSS, JavaScript e frameworks Frontend, além de colaborar com a equipe de design. Se você é apaixonado por desenvolvimento Frontend e focado na usabilidade, esta vaga é para você.', 'open', 4),
-('Desenvolvedor Backend','Pleno','Estamos à procura de um Desenvolvedor Backend experiente para desenvolver lógica e funcionalidades do servidor. O candidato ideal deve ter conhecimento em linguagens de programação para Backend, otimização de consultas e integração de sistemas. Se você é apaixonado por desenvolvimento Backend e resolução de problemas complexos, esta vaga é para você.', 'open', 5),
-('Desenvolvedor Full Stack','Pleno','Estamos à procura de um Desenvolvedor Full Stack experiente para desenvolver sistemas completos, tanto Frontend quanto Backend. O candidato ideal deve ter conhecimento em linguagens de programação para ambas as camadas, além de habilidade para solucionar problemas em todas as partes do sistema. Se você é um desenvolvedor Full Stack apaixonado por trabalhar em projetos desafiadores, esta vaga é para você.', 'open', 6),
-('Product Owner Sênior','Sênior','Estamos à procura de um Product Owner habilidoso e experiente para liderar nossa equipe de desenvolvimento de software em projetos altamente complexos. O candidato ideal possui mais de 5 anos de experiência em gerenciamento de produtos e é capaz de liderar eficazmente tanto o planejamento quanto a execução de projetos altamente desafiadores.','open', 7),
-('Analista de Testes QA Sênior','Sênior','Este(a) profissional é responsável por criar e executar testes avançados para garantir que nossos produtos atendam aos mais altos padrões de qualidade. Além disso, deve liderar a automação de testes em ambientes complexos e de alto risco. O candidato ideal possui uma ampla experiência em testes e automação e é capaz de conduzir testes em produtos digitais complexos.','open', 8),
-('Scrum Master Sênior','Sênior','Estamos à procura de um Scrum Master altamente qualificado para liderar nossas equipes ágeis em projetos de grande complexidade e alto impacto. O candidato ideal possui certificação Scrum Master avançada, juntamente com anos de experiência em facilitação de reuniões ágeis e remoção de impedimentos complexos. Se você é um especialista em metodologias ágeis e é apaixonado por promover a melhoria contínua, esta é a vaga certa para você.','open', 9),
-('Desenvolvedor Frontend Sênior','Sênior','Estamos em busca de um Desenvolvedor Frontend altamente experiente para criar interfaces de usuário excepcionais e funcionais. O candidato ideal possui experiência substancial em HTML, CSS, JavaScript e frameworks Frontend, bem como um histórico comprovado de colaboração eficaz com equipes de design em projetos complexos.','open', 10),
-('Desenvolvedor Backend Sênior','Sênior','Estamos à procura de um Desenvolvedor Backend experiente e altamente qualificado para desenvolver lógica e funcionalidades de servidor de alto desempenho. O candidato ideal possui conhecimento avançado em linguagens de programação para Backend, otimização de consultas e integração de sistemas complexos. Se você é apaixonado por resolver desafios técnicos em projetos de grande envergadura, esta é a vaga certa para você.','open', 11),
-('Desenvolvedor Full Stack Sênior','Sênior','Estamos à procura de um Desenvolvedor Full Stack altamente experiente para liderar o desenvolvimento de sistemas complexos, tanto Frontend quanto Backend. O candidato ideal possui conhecimento avançado em linguagens de programação para ambas as camadas, bem como habilidades excepcionais para resolver desafios técnicos em todas as partes do sistema.','open', 12);
+'Pleno','Estamos à procura de um Product Owner habilidoso para se juntar à nossa equipe de desenvolvimento de software. O candidato ideal terá mais de 3 anos de experiência em gerenciamento de produtos e será capaz de liderar efetivamente tanto o planejamento quanto a execução de projetos complexos.','open', 1,1),
+('Analista de Testes','Pleno','Esse(a) profissional é responsável por criar e executar testes que servirão para analisar se um produto ou um processo está funcionando da melhor maneira possível. Além disso, pode desenvolver a automação de testes que ocorram com frequência para sua análise.\n\nNo caso de produtos digitais, os analistas de QA podem trabalhar com softwares, sites, aplicativos ou jogos. Além disso, podem realizar a automação de testes que ocorram com frequência para sua posterior análise.\n\nÉ importante que o analista registre todas as falhas encontradas e faça a sugestão de melhorias. Para isso, irá trabalhar diretamente com a equipe de desenvolvimento..\n\nBuscamos um perfil bastante detalhista e analítico, pois, em última análise, seu trabalho será parte integrante de nossos esforços para garantir a melhor experiência de uso do nosso aplicativo.','open',2,2),
+('Scrum Master','Pleno','Estamos à procura de um Scrum Master qualificado para liderar nossas equipes ágeis e garantir a entrega de valor. O candidato ideal deve possuir certificação Scrum Master, experiência em facilitação de reuniões ágeis e remoção de impedimentos, além de promover a melhoria contínua. Se você é apaixonado por metodologias ágeis e tem habilidade para colaborar com equipes, esta vaga é para você.', 'open', 3,3),
+('Desenvolvedor Frontend','Pleno','Estamos à procura de um Desenvolvedor Frontend talentoso para criar interfaces de usuário atraentes e funcionais. O candidato ideal deve ter experiência em HTML, CSS, JavaScript e frameworks Frontend, além de colaborar com a equipe de design. Se você é apaixonado por desenvolvimento Frontend e focado na usabilidade, esta vaga é para você.', 'open', 4,4),
+('Desenvolvedor Backend','Pleno','Estamos à procura de um Desenvolvedor Backend experiente para desenvolver lógica e funcionalidades do servidor. O candidato ideal deve ter conhecimento em linguagens de programação para Backend, otimização de consultas e integração de sistemas. Se você é apaixonado por desenvolvimento Backend e resolução de problemas complexos, esta vaga é para você.', 'open', 5,5),
+('Desenvolvedor Full Stack','Pleno','Estamos à procura de um Desenvolvedor Full Stack experiente para desenvolver sistemas completos, tanto Frontend quanto Backend. O candidato ideal deve ter conhecimento em linguagens de programação para ambas as camadas, além de habilidade para solucionar problemas em todas as partes do sistema. Se você é um desenvolvedor Full Stack apaixonado por trabalhar em projetos desafiadores, esta vaga é para você.', 'open', 6,6),
+('Product Owner Sênior','Sênior','Estamos à procura de um Product Owner habilidoso e experiente para liderar nossa equipe de desenvolvimento de software em projetos altamente complexos. O candidato ideal possui mais de 5 anos de experiência em gerenciamento de produtos e é capaz de liderar eficazmente tanto o planejamento quanto a execução de projetos altamente desafiadores.','open', 7,7),
+('Analista de Testes QA Sênior','Sênior','Este(a) profissional é responsável por criar e executar testes avançados para garantir que nossos produtos atendam aos mais altos padrões de qualidade. Além disso, deve liderar a automação de testes em ambientes complexos e de alto risco. O candidato ideal possui uma ampla experiência em testes e automação e é capaz de conduzir testes em produtos digitais complexos.','open', 8,8),
+('Scrum Master Sênior','Sênior','Estamos à procura de um Scrum Master altamente qualificado para liderar nossas equipes ágeis em projetos de grande complexidade e alto impacto. O candidato ideal possui certificação Scrum Master avançada, juntamente com anos de experiência em facilitação de reuniões ágeis e remoção de impedimentos complexos. Se você é um especialista em metodologias ágeis e é apaixonado por promover a melhoria contínua, esta é a vaga certa para você.','open', 9,9),
+('Desenvolvedor Frontend Sênior','Sênior','Estamos em busca de um Desenvolvedor Frontend altamente experiente para criar interfaces de usuário excepcionais e funcionais. O candidato ideal possui experiência substancial em HTML, CSS, JavaScript e frameworks Frontend, bem como um histórico comprovado de colaboração eficaz com equipes de design em projetos complexos.','open', 10,10),
+('Desenvolvedor Backend Sênior','Sênior','Estamos à procura de um Desenvolvedor Backend experiente e altamente qualificado para desenvolver lógica e funcionalidades de servidor de alto desempenho. O candidato ideal possui conhecimento avançado em linguagens de programação para Backend, otimização de consultas e integração de sistemas complexos. Se você é apaixonado por resolver desafios técnicos em projetos de grande envergadura, esta é a vaga certa para você.','open', 11,11),
+('Desenvolvedor Full Stack Sênior','Sênior','Estamos à procura de um Desenvolvedor Full Stack altamente experiente para liderar o desenvolvimento de sistemas complexos, tanto Frontend quanto Backend. O candidato ideal possui conhecimento avançado em linguagens de programação para ambas as camadas, bem como habilidades excepcionais para resolver desafios técnicos em todas as partes do sistema.','open', 12,12);

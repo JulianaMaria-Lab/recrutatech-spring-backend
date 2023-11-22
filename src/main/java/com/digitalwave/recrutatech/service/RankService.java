@@ -8,12 +8,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 
 import com.digitalwave.recrutatech.entity.Rank;
+import com.digitalwave.recrutatech.interfaces.IRankService;
 import com.digitalwave.recrutatech.repository.RankRepository;
 
 import jakarta.persistence.EntityNotFoundException;
 
 @Service
-public class RankService {
+public class RankService implements IRankService {
 	
 	@Autowired
 	private RankRepository rankRepo;

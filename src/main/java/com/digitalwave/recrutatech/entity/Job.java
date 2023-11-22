@@ -36,7 +36,8 @@ public class Job {
     @JoinColumn(name = "cha_id")
     private Cha cha;
     
-    @OneToOne(mappedBy = "job", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "rank_id")
     private Rank rank;
 
     public Job() {
