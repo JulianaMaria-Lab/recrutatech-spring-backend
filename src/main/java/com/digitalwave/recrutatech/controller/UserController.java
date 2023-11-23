@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import com.digitalwave.recrutatech.entity.User;
+import com.digitalwave.recrutatech.entity.Usuario;
 import com.digitalwave.recrutatech.service.UserService;
 
 @RestController
@@ -17,26 +17,26 @@ public class UserController {
   private UserService userService;
 
   @PostMapping
-  public ResponseEntity<User> createUser(@RequestBody User user) {
-    User createdUser = userService.createUser(user);
+  public ResponseEntity<Usuario> createUser(@RequestBody Usuario user) {
+    Usuario createdUser = userService.createUser(user);
     return new ResponseEntity<>(createdUser, HttpStatus.CREATED);
   }
 
   @GetMapping
-  public ResponseEntity<List<User>> getAllUsers() {
-    List<User> users = userService.getAllUsers();
+  public ResponseEntity<List<Usuario>> getAllUsers() {
+    List<Usuario> users = userService.getAllUsers();
     return new ResponseEntity<>(users, HttpStatus.OK);
   }
 
   @GetMapping("/{id}")
-  public ResponseEntity<User> getUserById(@PathVariable Long id) {
-    User user = userService.getById(id);
+  public ResponseEntity<Usuario> getUserById(@PathVariable Long id) {
+    Usuario user = userService.getById(id);
     return new ResponseEntity<>(user, HttpStatus.OK);
   }
 
   @PutMapping("/{id}")
-  public ResponseEntity<User> updateJob(@PathVariable("id") long id, @RequestBody User updatedUser) {
-    User updatedUserEntity = userService.updateUser(id, updatedUser);
+  public ResponseEntity<Usuario> updateJob(@PathVariable("id") long id, @RequestBody Usuario updatedUser) {
+    Usuario updatedUserEntity = userService.updateUser(id, updatedUser);
     if (updatedUserEntity != null) {
       return ResponseEntity.ok(updatedUserEntity);
     } else {

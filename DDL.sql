@@ -10,7 +10,7 @@ GRANT SELECT, INSERT, DELETE, UPDATE ON recrutatech.* TO 'user'@'localhost';
 
 USE recrutatech;
 
-CREATE TABLE user (
+CREATE TABLE usr_usuario (
     user_id BIGINT AUTO_INCREMENT PRIMARY KEY,
     user_name VARCHAR(255),
     user_email VARCHAR(255),
@@ -35,10 +35,9 @@ CREATE TABLE user (
 --     id BIGINT AUTO_INCREMENT PRIMARY KEY,
 --     content TEXT
 -- );
-
-INSERT INTO user (user_name, user_email, user_password, user_role, user_status, created_at, updated_at)
+INSERT INTO usr_usuario (user_name, user_email, user_password, user_role, user_status, created_at, updated_at)
 VALUES
-    ('Usuario1', 'usuario1@example.com', 'senha1', 'ROLE_USER', true, NOW(), NOW()),
-    ('Usuario2', 'usuario2@example.com', 'senha2', 'ROLE_USER', true, NOW(), NOW()),
-    ('Usuario3', 'usuario3@example.com', 'senha3', 'ROLE_ADMIN', true, NOW(), NOW()),
-    ('Usuario4', 'usuario4@example.com', 'senha4', 'ROLE_USER', false, NOW(), NOW());
+    ('Usuario1', 'usuario1@example.com', 'senha1', 'USER', true, NOW(), NOW()),
+    ('Usuario2', 'usuario2@example.com', 'senha2', 'USER', true, NOW(), NOW()),
+    ('Usuario3', 'usuario3@example.com', 'senha3', 'ADMIN', true, NOW(), NOW()),
+    ('Usuario4', 'usuario4@example.com', 'senha4', 'USER', false, NOW(), NOW());

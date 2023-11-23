@@ -1,13 +1,14 @@
 package com.digitalwave.recrutatech.repository;
 
+import java.util.Optional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Repository;
 
-import com.digitalwave.recrutatech.entity.User;
+import com.digitalwave.recrutatech.entity.Usuario;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Long>{
+public interface UserRepository extends JpaRepository<Usuario, Long>{
 
-    UserDetails findByEmail(String email);
+    public Optional<Usuario> findByEmail(String email);
 }

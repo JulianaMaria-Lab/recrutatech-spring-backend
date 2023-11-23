@@ -2,12 +2,12 @@ package com.digitalwave.recrutatech.interfaces;
 
 import java.util.List;
 
-import com.digitalwave.recrutatech.entity.User;
+import com.digitalwave.recrutatech.entity.Usuario;
 
 public interface IUserService {
-  User createUser(User user);
-  List<User> getAllUsers();
-  User getById(Long id);
-  User updateUser(Long id, User updatedUser);
-  User deleteUser(Long id);
+  Usuario createUser(Usuario user);
+  List<Usuario> getAllUsers();
+  Usuario getById(Long id);
+  Usuario updateUser(Long id, Usuario updatedUser);
+  Usuario deleteUser(Long id);
 }
