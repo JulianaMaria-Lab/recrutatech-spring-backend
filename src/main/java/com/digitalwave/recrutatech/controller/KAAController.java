@@ -40,28 +40,27 @@ public class KAAController {
 	
 	@PostMapping("/add")
 	public KAA createKAA(@RequestBody KAA kaa) {
-	    Knowledge knowledge = kaa.getKnowledge();
-	    Ability ability = kaa.getAbility();
-	    Attitude attitude = kaa.getAttitude();
+    Knowledge knowledge = kaa.getKnowledge();
+    Ability ability = kaa.getAbility();
+    Attitude attitude = kaa.getAttitude();
 
-	    return service.createKAA(knowledge, ability, attitude);
+    return service.createKAA(knowledge, ability, attitude);
 	}
 	
-    @PutMapping("/{id}")
-    public ResponseEntity<KAA> updateKAA(@PathVariable("id") long id, @RequestBody KAA updatedKAA) {
-        KAA updatedKAAEntity = service.updateKAA(id, updatedKAA);
-        if (updatedKAAEntity != null) {
-            return ResponseEntity.ok(updatedKAAEntity);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
-    }
-	
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteKAA(@PathVariable("id") long id) {
-        service.deleteKAA(id);
-        return ResponseEntity.noContent().build();
-    }
+  @PutMapping("/{id}")
+  public ResponseEntity<KAA> updateKAA(@PathVariable("id") long id, @RequestBody KAA updatedKAA) {
+      KAA updatedKAAEntity = service.updateKAA(id, updatedKAA);
+      if (updatedKAAEntity != null) {
+          return ResponseEntity.ok(updatedKAAEntity);
+      } else {
+          return ResponseEntity.notFound().build();
+      }
+  }
 
+  @DeleteMapping("/{id}")
+  public ResponseEntity<Void> deleteKAA(@PathVariable("id") long id) {
+    service.deleteKAA(id);
+    return ResponseEntity.noContent().build();
+  }
 
 }

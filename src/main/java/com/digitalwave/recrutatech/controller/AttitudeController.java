@@ -14,7 +14,7 @@ import com.digitalwave.recrutatech.entity.Attitude;
 import com.digitalwave.recrutatech.interfaces.IAttitudeService;
 
 @RestController
-@RequestMapping(value="/ati")
+@RequestMapping(value="/attitude")
 @CrossOrigin
 public class AttitudeController {
 	
@@ -30,6 +30,5 @@ public class AttitudeController {
 	public Attitude newAttitude(@RequestBody Attitude attitude) {
 		return service.newAttitude(attitude);
 	}
-
 
 }

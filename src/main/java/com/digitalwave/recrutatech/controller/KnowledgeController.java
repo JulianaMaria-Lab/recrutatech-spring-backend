@@ -14,7 +14,7 @@ import com.digitalwave.recrutatech.entity.Knowledge;
 import com.digitalwave.recrutatech.interfaces.IKnowledgeService;
 
 @RestController
-@RequestMapping(value="/con")
+@RequestMapping(value="/knoledge")
 @CrossOrigin
 
 public class KnowledgeController {
@@ -30,5 +30,5 @@ public class KnowledgeController {
 	public Knowledge newKnowledge(@RequestBody Knowledge knowledge) {
 		return service.newKnowledge(knowledge);
 	}
-
+	
 }

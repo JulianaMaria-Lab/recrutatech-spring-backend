@@ -14,7 +14,7 @@ import com.digitalwave.recrutatech.entity.Ability;
 import com.digitalwave.recrutatech.interfaces.IAbilityService;
 
 @RestController
-@RequestMapping(value="/hab")
+@RequestMapping(value="/ability")
 @CrossOrigin
 public class AbilityController {
 	@Autowired

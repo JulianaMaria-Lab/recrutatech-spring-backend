@@ -39,25 +39,25 @@ public class JobController {
 		return service.findJobId(id);
 	}
 	
-    @GetMapping("/status/")
-    public List<Job> getJobsByStatus(String jobStatus) {
-        return service.findAllJobStatus(jobStatus);
-    }
+  @GetMapping("/status/")
+  public List<Job> getJobsByStatus(String jobStatus) {
+     return service.findAllJobStatus(jobStatus);
+  }
     
-    @PutMapping("/{id}")
-    public ResponseEntity<Job> updateJob(@PathVariable("id") long id, @RequestBody Job updatedJob) {
-        Job updatedJobEntity = service.updateJob(id, updatedJob);
-        if (updatedJobEntity != null) {
-            return ResponseEntity.ok(updatedJobEntity);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+  @PutMapping("/{id}")
+  public ResponseEntity<Job> updateJob(@PathVariable("id") long id, @RequestBody Job updatedJob) {
+    Job updatedJobEntity = service.updateJob(id, updatedJob);
+    if (updatedJobEntity != null) {
+      return ResponseEntity.ok(updatedJobEntity);
+    } else {
+      return ResponseEntity.notFound().build();
     }
+  }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteJob(@PathVariable("id") long id) {
-        service.deleteJob(id);
-        return ResponseEntity.noContent().build();
-    }
+  @DeleteMapping("/{id}")
+  public ResponseEntity<Void> deleteJob(@PathVariable("id") long id) {
+    service.deleteJob(id);
+    return ResponseEntity.noContent().build();
+  }
 
 }

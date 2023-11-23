@@ -11,7 +11,7 @@ import com.digitalwave.recrutatech.service.UserService;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/api/users")
+@RequestMapping("/users")
 public class UserController {
 
   @Autowired
@@ -50,4 +50,5 @@ public class UserController {
     userService.deleteUser(id);
     return ResponseEntity.noContent().build();
   }
+  
 }
