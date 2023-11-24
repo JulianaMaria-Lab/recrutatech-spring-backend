@@ -18,51 +18,49 @@ import com.digitalwave.recrutatech.entity.Atitude;
 import com.digitalwave.recrutatech.entity.Cha;
 import com.digitalwave.recrutatech.entity.Conhecimento;
 import com.digitalwave.recrutatech.entity.Habilidade;
-import com.digitalwave.recrutatech.entity.Job;
 import com.digitalwave.recrutatech.interfaces.IChaService;
 
 @RestController
-@RequestMapping(value="/cha")
+@RequestMapping(value = "/cha")
 @CrossOrigin
 public class ChaController {
-	
+
 	@Autowired
 	private IChaService service;
-	
+
 	@GetMapping("/")
-	public List<Cha> allCha(){
+	public List<Cha> allCha() {
 		return service.findAllCha();
 	}
-	
-	@GetMapping (value="/{id}")
-	public Cha findId (@PathVariable("id") Long id) {
+
+	@GetMapping(value = "/{id}")
+	public Cha findId(@PathVariable("id") Long id) {
 		return service.findChaId(id);
 	}
-	
+
 	@PostMapping("/add")
 	public Cha createCha(@RequestBody Cha cha) {
-	    Conhecimento conhecimento = cha.getConhecimento();
-	    Habilidade habilidade = cha.getHabilidade();
-	    Atitude atitude = cha.getAtitude();
+		Conhecimento conhecimento = cha.getConhecimento();
+		Habilidade habilidade = cha.getHabilidade();
+		Atitude atitude = cha.getAtitude();
 
-	    return service.createCha(conhecimento, habilidade, atitude);
+		return service.createCha(conhecimento, habilidade, atitude);
 	}
-	
-    @PutMapping("/{id}")
-    public ResponseEntity<Cha> updateCha(@PathVariable("id") long id, @RequestBody Cha updatedCha) {
-        Cha updatedChaEntity = service.updateCha(id, updatedCha);
-        if (updatedChaEntity != null) {
-            return ResponseEntity.ok(updatedChaEntity);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
-    }
-	
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteCha(@PathVariable("id") long id) {
-        service.deleteCha(id);
-        return ResponseEntity.noContent().build();
-    }
 
+	@PutMapping("/{id}")
+	public ResponseEntity<Cha> updateCha(@PathVariable("id") long id, @RequestBody Cha updatedCha) {
+		Cha updatedChaEntity = service.updateCha(id, updatedCha);
+		if (updatedChaEntity != null) {
+			return ResponseEntity.ok(updatedChaEntity);
+		} else {
+			return ResponseEntity.notFound().build();
+		}
+	}
+
+	@DeleteMapping("/{id}")
+	public ResponseEntity<Void> deleteCha(@PathVariable("id") long id) {
+		service.deleteCha(id);
+		return ResponseEntity.noContent().build();
+	}
 
 }

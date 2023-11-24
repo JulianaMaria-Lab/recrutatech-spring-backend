@@ -30,8 +30,6 @@ public class ChaService implements IChaService {
     @Autowired
     private AtitudeRepository aRepo;
 
-
-    
     public Cha createCha(Conhecimento conhecimento, Habilidade habilidade, Atitude atitude) {
         Cha cha = new Cha();
         cha.setConhecimento(conhecimento);
@@ -39,39 +37,39 @@ public class ChaService implements IChaService {
         cha.setAtitude(atitude);
         return chaRepo.save(cha);
     }
-    
+
     @Override
     public Cha newCha(Cha cha) {
         Long conhecimentoId = cha.getConhecimento().getId();
         Conhecimento conhecimento = cRepo.findById(conhecimentoId)
                 .orElseThrow();
         cha.setConhecimento(conhecimento);
-        
+
         Long habilidadeId = cha.getHabilidade().getId();
         Habilidade habilidade = hRepo.findById(habilidadeId)
                 .orElseThrow();
         cha.setHabilidade(habilidade);
-        
+
         Long atitudeId = cha.getAtitude().getId();
         Atitude atitude = aRepo.findById(atitudeId)
                 .orElseThrow();
         cha.setAtitude(atitude);
-        
+
         return chaRepo.save(cha);
     }
 
-	public List<Cha> findAllCha(){
-		return chaRepo.findAll();
-	}
-	
+    public List<Cha> findAllCha() {
+        return chaRepo.findAll();
+    }
+
     public Cha findChaId(Long id) {
         Optional<Cha> chaOp = chaRepo.findById(id);
-        if(chaOp.isEmpty()) {
+        if (chaOp.isEmpty()) {
             throw new IllegalArgumentException("CHA não encontrado!");
         }
         return chaOp.get();
     }
-    
+
     @Override
     public Cha updateCha(Long id, Cha updateCha) {
         Optional<Cha> chaOp = chaRepo.findById(id);
@@ -80,14 +78,14 @@ public class ChaService implements IChaService {
             Cha existingCha = chaOp.get();
 
             if (!ObjectUtils.isEmpty(updateCha.getConhecimento())) {
-            	existingCha.setConhecimento(updateCha.getConhecimento());
+                existingCha.setConhecimento(updateCha.getConhecimento());
             }
             if (!ObjectUtils.isEmpty(updateCha.getHabilidade())) {
-            	existingCha.setHabilidade(updateCha.getHabilidade());
+                existingCha.setHabilidade(updateCha.getHabilidade());
             }
 
             if (!ObjectUtils.isEmpty(updateCha.getAtitude())) {
-            	existingCha.setAtitude(updateCha.getAtitude());
+                existingCha.setAtitude(updateCha.getAtitude());
             }
 
             return chaRepo.save(existingCha);
@@ -95,9 +93,9 @@ public class ChaService implements IChaService {
             throw new EntityNotFoundException("Cha não encontrado - ID: " + id);
         }
     }
-    
-	public void deleteCha(Long id) {
-		chaRepo.deleteById(id);
-	}
+
+    public void deleteCha(Long id) {
+        chaRepo.deleteById(id);
+    }
 
 }
