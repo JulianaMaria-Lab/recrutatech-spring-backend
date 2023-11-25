@@ -5,8 +5,6 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.util.ObjectUtils;
-
 import com.digitalwave.recrutatech.entity.Atitude;
 import com.digitalwave.recrutatech.entity.Cha;
 import com.digitalwave.recrutatech.entity.Conhecimento;
@@ -77,6 +75,7 @@ public class ChaService implements IChaService {
         if (chaOp.isPresent()) {
             Cha existingCha = chaOp.get();
 
+            /*
             if (!ObjectUtils.isEmpty(updateCha.getConhecimento())) {
                 existingCha.setConhecimento(updateCha.getConhecimento());
             }
@@ -87,6 +86,11 @@ public class ChaService implements IChaService {
             if (!ObjectUtils.isEmpty(updateCha.getAtitude())) {
                 existingCha.setAtitude(updateCha.getAtitude());
             }
+            */
+            
+            existingCha.setConhecimento(updateCha.getConhecimento());
+            existingCha.setHabilidade(updateCha.getHabilidade());
+            existingCha.setAtitude(updateCha.getAtitude());
 
             return chaRepo.save(existingCha);
         } else {
