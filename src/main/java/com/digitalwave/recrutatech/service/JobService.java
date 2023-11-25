@@ -71,7 +71,23 @@ public class JobService implements IJobService {
             }
 
             if (!ObjectUtils.isEmpty(updatedJob.getCha())) {
-                existingJob.setCha(updatedJob.getCha());
+                Cha updatedCha = updatedJob.getCha();
+
+                if (!ObjectUtils.isEmpty(updatedCha.getConhecimento())) {
+                    existingJob.getCha().setConhecimento(updatedCha.getConhecimento());
+                }
+
+                if (!ObjectUtils.isEmpty(updatedCha.getHabilidade())) {
+                    existingJob.getCha().setHabilidade(updatedCha.getHabilidade());
+                }
+
+                if (!ObjectUtils.isEmpty(updatedCha.getAtitude())) {
+                    existingJob.getCha().setAtitude(updatedCha.getAtitude());
+                }
+            }
+            
+            if (!ObjectUtils.isEmpty(updatedJob.getRank())) {
+                existingJob.setRank(updatedJob.getRank());
             }
 
             return jobRepo.save(existingJob);
