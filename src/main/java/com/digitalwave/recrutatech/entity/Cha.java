@@ -1,6 +1,8 @@
 package com.digitalwave.recrutatech.entity;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -11,21 +13,22 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "cha")
 public class Cha {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-    @OneToOne
-    @JoinColumn(name = "conhecimento_id")
-    private Conhecimento conhecimento;
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "conhecimento_id")
+	private Conhecimento conhecimento;
 
-    @OneToOne
-    @JoinColumn(name = "habilidade_id")
-    private Habilidade habilidade;
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "habilidade_id")
+	private Habilidade habilidade;
 
-    @OneToOne
-    @JoinColumn(name = "atitude_id")
-    private Atitude atitude;
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "atitude_id")
+	private Atitude atitude;
 
 	public Long getId() {
 		return id;
