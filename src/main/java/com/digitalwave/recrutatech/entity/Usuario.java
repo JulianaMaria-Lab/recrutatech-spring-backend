@@ -8,22 +8,22 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="usr_usuario")
+@Table(name = "usr_usuario")
 public class Usuario {
-  
+
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "user_id")
   private Long id;
 
   @Column(name = "user_name")
-  private String userName;
+  private String username;
 
   @Column(name = "user_email")
   private String email;
 
   @Column(name = "user_password")
-  //@JsonIgnore
+  // @JsonIgnore
   private String password;
 
   @Column(name = "user_role")
@@ -41,10 +41,10 @@ public class Usuario {
   public Usuario() {
   }
 
-  public Usuario(String email, String password, String userName) {
+  public Usuario(String email, String password, String username) {
     this.email = email;
     this.password = password;
-    this.userName = userName;
+    this.username = username;
   }
 
   public Long getId() {
@@ -55,12 +55,12 @@ public class Usuario {
     this.id = id;
   }
 
-  public String getUserName() {
-    return userName;
+  public String getUsername() {
+    return username;
   }
 
-  public void setUserName(String userName) {
-    this.userName = userName;
+  public void setUsername(String username) {
+    this.username = username;
   }
 
   public String getEmail() {
@@ -92,7 +92,7 @@ public class Usuario {
   }
 
   public void setUserStatus(Boolean userStatus) {
-      this.userStatus = userStatus;
+    this.userStatus = userStatus;
   }
 
   public java.sql.Timestamp getCreatedAt() {
