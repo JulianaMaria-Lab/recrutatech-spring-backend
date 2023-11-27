@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.digitalwave.recrutatech.entity.Job;
 import com.digitalwave.recrutatech.entity.Rank;
 import com.digitalwave.recrutatech.interfaces.IRankService;
 

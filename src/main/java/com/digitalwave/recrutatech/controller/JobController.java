@@ -1,4 +1,4 @@
-package com.digitalwave.recrutatech.controller;
+ package com.digitalwave.recrutatech.controller;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,10 +39,11 @@ public class JobController {
 		return service.findJobId(id);
 	}
 	
-    @GetMapping("/status/")
-    public List<Job> getJobsByStatus(String jobStatus) {
-        return service.findAllJobStatus(jobStatus);
-    }
+	@GetMapping("/status/{status}")
+	public List<Job> getJobsByStatus(@PathVariable("status") String status) {
+	    return service.findAllJobStatus(status);
+	}
+
     
     @PutMapping("/{id}")
     public ResponseEntity<Job> updateJob(@PathVariable("id") long id, @RequestBody Job updatedJob) {

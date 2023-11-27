@@ -33,8 +33,8 @@ public class Job {
 	private String jobStatus;
 	
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "cha_id")
-    private Cha cha;
+    @JoinColumn(name = "kaa_id")
+    private Kaa kaa;
     
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "rank_id")
@@ -43,12 +43,12 @@ public class Job {
     public Job() {
     }
 
-	public Job(String jobTitle, String jobLevel, String jobDescription, String jobStatus, Cha cha, Rank rank) {
+	public Job(String jobTitle, String jobLevel, String jobDescription, String jobStatus, Kaa kaa, Rank rank) {
 		this.jobTitle = jobTitle;
 		this.jobLevel = jobLevel;
 		this.jobDescription = jobDescription;
 		this.jobStatus = jobStatus;
-		this.cha = cha;
+		this.kaa = kaa;
 		this.rank = rank;
 	}
 	
@@ -92,12 +92,12 @@ public class Job {
 		this.jobStatus = jobStatus;
 	}
 
-    public Cha getCha() {
-        return cha;
+    public Kaa getKaa() {
+        return kaa;
     }
 
-    public void setCha(Cha cha) {
-        this.cha = cha;
+    public void setKaa(Kaa kaa) {
+        this.kaa = kaa;
     }
 
 	public Rank getRank() {

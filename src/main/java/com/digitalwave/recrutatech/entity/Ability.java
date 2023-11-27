@@ -8,8 +8,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "habilidade")
-public class Habilidade {
+@Table(name = "ability")
+public class Ability {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -33,7 +33,7 @@ public class Habilidade {
 		this.content = content;
 	}
 
-    public void saveHabilidade(String jsonResponse) {
+    public void saveAbility(String jsonResponse) {
         this.content = jsonResponse;
     }
 

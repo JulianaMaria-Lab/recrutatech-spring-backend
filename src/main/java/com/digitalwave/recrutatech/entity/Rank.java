@@ -13,7 +13,7 @@ import jakarta.persistence.Table;
 import java.util.List;
 
 @Entity
-@Table(name = "rank")
+@Table(name = "`rank`")
 public class Rank {
 
     @Id

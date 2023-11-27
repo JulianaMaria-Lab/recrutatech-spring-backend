@@ -13,32 +13,32 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.digitalwave.recrutatech.entity.Conhecimento;
-import com.digitalwave.recrutatech.interfaces.IConhecimentoService;
+import com.digitalwave.recrutatech.entity.Attitude;
+import com.digitalwave.recrutatech.interfaces.IAttitudeService;
 
 @RestController
-@RequestMapping(value="/con")
+@RequestMapping(value="/attitude")
 @CrossOrigin
-
-public class ConhecimentoController {
+public class AttitudeController {
+	
 	@Autowired
-	private IConhecimentoService service;
+	private IAttitudeService service;
 	
 	@GetMapping("/")
-	public List<Conhecimento> allConhecimento(){
-		return service.findAllConhecimento();
+	public List<Attitude> allAtitude(){
+		return service.findAllAtitude();
 	}
 	
 	@PostMapping("/add")
-	public Conhecimento newConhecimento(@RequestBody Conhecimento conhecimento) {
-		return service.newConhecimento(conhecimento);
+	public Attitude newAtitude(@RequestBody Attitude attitude) {
+		return service.newAtitude(attitude);
 	}
 
 	@PutMapping("/{id}")
-    public ResponseEntity<Conhecimento> updateConhecimento(@PathVariable("id") long id, @RequestBody Conhecimento updatedConhecimento) {
-        Conhecimento updatedConhecimentoEntity = service.updateConhecimento(id, updatedConhecimento);
-        if (updatedConhecimentoEntity != null) {
-            return ResponseEntity.ok(updatedConhecimentoEntity);
+    public ResponseEntity<Attitude> updateAtitude(@PathVariable("id") long id, @RequestBody Attitude updatedAtitude) {
+        Attitude updatedAtitudeEntity = service.updateAtitude(id, updatedAtitude);
+        if (updatedAtitudeEntity != null) {
+            return ResponseEntity.ok(updatedAtitudeEntity);
         } else {
             return ResponseEntity.notFound().build();
         }

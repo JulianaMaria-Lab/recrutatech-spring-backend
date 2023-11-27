@@ -8,8 +8,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "atitude")
-public class Atitude {
+@Table(name = "attitude")
+public class Attitude {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -33,7 +33,7 @@ public class Atitude {
 		this.content = content;
 	}
 
-    public void saveAtitude(String jsonResponse) {
+    public void saveAttitude(String jsonResponse) {
         this.content = jsonResponse;
     }
 

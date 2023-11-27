@@ -9,8 +9,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "conhecimento")
-public class Conhecimento {
+@Table(name = "knowledge")
+public class Knowledge {
 
 		@Id
 		@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,7 +35,7 @@ public class Conhecimento {
 			this.content = content;
 		}
 
-	    public void saveConhecimento(String jsonResponse) {
+	    public void saveKnowledge(String jsonResponse) {
 	        this.content = jsonResponse;;
 	    }
 

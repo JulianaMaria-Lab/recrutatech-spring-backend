@@ -7,29 +7,29 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 
-import com.digitalwave.recrutatech.entity.Atitude;
-import com.digitalwave.recrutatech.interfaces.IAtitudeService;
-import com.digitalwave.recrutatech.repository.AtitudeRepository;
+import com.digitalwave.recrutatech.entity.Attitude;
+import com.digitalwave.recrutatech.interfaces.IAttitudeService;
+import com.digitalwave.recrutatech.repository.AttitudeRepository;
 
 import jakarta.persistence.EntityNotFoundException;
 
 @Service
-public class AtitudeService implements IAtitudeService {
+public class AttitudeService implements IAttitudeService {
 	
 	@Autowired
-	private AtitudeRepository aRepo;
+	private AttitudeRepository aRepo;
 	
 	@Override
-	public Atitude newAtitude(Atitude atitude) {
-		return aRepo.save(atitude);
+	public Attitude newAtitude(Attitude attitude) {
+		return aRepo.save(attitude);
 	}
 
-	public List<Atitude> findAllAtitude(){
+	public List<Attitude> findAllAtitude(){
 		return aRepo.findAll();
 	}
 	
-    public Atitude findAtitudeId(Long id) {
-        Optional<Atitude> aOp = aRepo.findById(id);
+    public Attitude findAtitudeId(Long id) {
+        Optional<Attitude> aOp = aRepo.findById(id);
         if(aOp.isEmpty()) {
             throw new IllegalArgumentException("Atitude não encontrada!");
         }
@@ -37,11 +37,11 @@ public class AtitudeService implements IAtitudeService {
     }
     
     @Override
-    public Atitude updateAtitude(Long id, Atitude updateAtitude) {
-        Optional<Atitude> aOp = aRepo.findById(id);
+    public Attitude updateAtitude(Long id, Attitude updateAtitude) {
+        Optional<Attitude> aOp = aRepo.findById(id);
 
         if (aOp.isPresent()) {
-        	Atitude existingAtitude = aOp.get();
+        	Attitude existingAtitude = aOp.get();
 
             if (!ObjectUtils.isEmpty(updateAtitude.getContent())) {
             	existingAtitude.setContent(updateAtitude.getContent());

@@ -13,32 +13,31 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.digitalwave.recrutatech.entity.Atitude;
-import com.digitalwave.recrutatech.interfaces.IAtitudeService;
+import com.digitalwave.recrutatech.entity.Ability;
+import com.digitalwave.recrutatech.interfaces.IAbilityService;
 
 @RestController
-@RequestMapping(value="/ati")
+@RequestMapping(value="/ability")
 @CrossOrigin
-public class AtitudeController {
-	
+public class AbilityController {
 	@Autowired
-	private IAtitudeService service;
+	private IAbilityService service;
 	
 	@GetMapping("/")
-	public List<Atitude> allAtitude(){
-		return service.findAllAtitude();
+	public List<Ability> allHabilidade(){
+		return service.findAllHabilidade();
 	}
 	
 	@PostMapping("/add")
-	public Atitude newAtitude(@RequestBody Atitude atitude) {
-		return service.newAtitude(atitude);
+	public Ability newHabilidade(@RequestBody Ability ability) {
+		return service.newHabilidade(ability);
 	}
 
 	@PutMapping("/{id}")
-    public ResponseEntity<Atitude> updateAtitude(@PathVariable("id") long id, @RequestBody Atitude updatedAtitude) {
-        Atitude updatedAtitudeEntity = service.updateAtitude(id, updatedAtitude);
-        if (updatedAtitudeEntity != null) {
-            return ResponseEntity.ok(updatedAtitudeEntity);
+    public ResponseEntity<Ability> updateHabilidade(@PathVariable("id") long id, @RequestBody Ability updatedHabilidade) {
+        Ability updatedhabilidadeEntity = service.updateHabilidade(id, updatedHabilidade);
+        if (updatedhabilidadeEntity != null) {
+            return ResponseEntity.ok(updatedhabilidadeEntity);
         } else {
             return ResponseEntity.notFound().build();
         }

@@ -13,31 +13,32 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.digitalwave.recrutatech.entity.Habilidade;
-import com.digitalwave.recrutatech.interfaces.IHabilidadeService;
+import com.digitalwave.recrutatech.entity.Knowledge;
+import com.digitalwave.recrutatech.interfaces.IKnowledgeService;
 
 @RestController
-@RequestMapping(value="/hab")
+@RequestMapping(value="/knowledge")
 @CrossOrigin
-public class HabilidadeController {
+
+public class KnowledgeController {
 	@Autowired
-	private IHabilidadeService service;
+	private IKnowledgeService service;
 	
 	@GetMapping("/")
-	public List<Habilidade> allHabilidade(){
-		return service.findAllHabilidade();
+	public List<Knowledge> allKnowledge(){
+		return service.findAllKnowledge();
 	}
 	
 	@PostMapping("/add")
-	public Habilidade newHabilidade(@RequestBody Habilidade habilidade) {
-		return service.newHabilidade(habilidade);
+	public Knowledge newKnowledge(@RequestBody Knowledge knowledge) {
+		return service.newKnowledge(knowledge);
 	}
 
 	@PutMapping("/{id}")
-    public ResponseEntity<Habilidade> updateHabilidade(@PathVariable("id") long id, @RequestBody Habilidade updatedHabilidade) {
-        Habilidade updatedhabilidadeEntity = service.updateHabilidade(id, updatedHabilidade);
-        if (updatedhabilidadeEntity != null) {
-            return ResponseEntity.ok(updatedhabilidadeEntity);
+    public ResponseEntity<Knowledge> updateKnowledge(@PathVariable("id") long id, @RequestBody Knowledge updatedKnowledge) {
+        Knowledge updatedKnowledgeEntity = service.updateKnowledge(id, updatedKnowledge);
+        if (updatedKnowledgeEntity != null) {
+            return ResponseEntity.ok(updatedKnowledgeEntity);
         } else {
             return ResponseEntity.notFound().build();
         }

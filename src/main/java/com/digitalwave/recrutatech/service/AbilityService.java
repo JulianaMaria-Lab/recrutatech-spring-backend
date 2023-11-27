@@ -7,29 +7,29 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 
-import com.digitalwave.recrutatech.entity.Habilidade;
-import com.digitalwave.recrutatech.interfaces.IHabilidadeService;
-import com.digitalwave.recrutatech.repository.HabilidadeRepository;
+import com.digitalwave.recrutatech.entity.Ability;
+import com.digitalwave.recrutatech.interfaces.IAbilityService;
+import com.digitalwave.recrutatech.repository.AbilityRepository;
 
 import jakarta.persistence.EntityNotFoundException;
 
 @Service
-public class HabilidadeService implements IHabilidadeService {
+public class AbilityService implements IAbilityService {
 	
 	@Autowired
-	private HabilidadeRepository hRepo;
+	private AbilityRepository hRepo;
 	
 	@Override
-	public Habilidade newHabilidade(Habilidade habilidade) {
-		return hRepo.save(habilidade);
+	public Ability newHabilidade(Ability ability) {
+		return hRepo.save(ability);
 	}
 
-	public List<Habilidade> findAllHabilidade(){
+	public List<Ability> findAllHabilidade(){
 		return hRepo.findAll();
 	}
 	
-    public Habilidade findHabilidadeId(Long id) {
-        Optional<Habilidade> hOp = hRepo.findById(id);
+    public Ability findHabilidadeId(Long id) {
+        Optional<Ability> hOp = hRepo.findById(id);
         if(hOp.isEmpty()) {
             throw new IllegalArgumentException("Habilidade não encontrada!");
         }
@@ -37,11 +37,11 @@ public class HabilidadeService implements IHabilidadeService {
     }
     
     @Override
-    public Habilidade updateHabilidade(Long id, Habilidade updateHabilidade) {
-        Optional<Habilidade> hOp = hRepo.findById(id);
+    public Ability updateHabilidade(Long id, Ability updateHabilidade) {
+        Optional<Ability> hOp = hRepo.findById(id);
 
         if (hOp.isPresent()) {
-        	Habilidade existingHabilidade = hOp.get();
+        	Ability existingHabilidade = hOp.get();
 
             if (!ObjectUtils.isEmpty(updateHabilidade.getContent())) {
             	existingHabilidade.setContent(updateHabilidade.getContent());
